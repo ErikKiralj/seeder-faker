@@ -14,6 +14,7 @@ class Meal extends Model
     public $translatedAttributes = ['title', 'description'];
     protected $fillable = ['status', 'category_id'];
     protected $dates = ['deleted_at'];
+    protected $hidden = ['translations','deleted_at', 'created_at', 'updated_at'];
 
     public function category()
     {
@@ -29,4 +30,5 @@ class Meal extends Model
     {
         return $this->belongsToMany('App\Ingredient', 'meal_ingredient')->withPivot('meal_id', 'ingredient_id');
     }
+
 }

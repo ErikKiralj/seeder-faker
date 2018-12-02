@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         factory(App\Category::class, 10)->create();
         factory(App\Ingredient::class, 10)->create();
         factory(App\Tag::class, 10)->create();
-        factory(\App\MealTag::class, 10)->create();
-        factory(\App\MealIngredient::class, 10)->create();
+        factory(\App\MealTag::class, 50)->create();
+        factory(\App\MealIngredient::class, 50)->create();
         
         $count = DB::table('tags')->count();
         for($i=1; $i<=$count; $i++)
@@ -34,6 +34,18 @@ class DatabaseSeeder extends Seeder
         for($i=1; $i<=$count; $i++)
         {
             DB::table('ingredients')->where('id', $i)->update(['slug' => 'ingredient-'. $i]);
+        }
+
+        $count = DB::table('meals')->count();
+        for($i=1; $i<=$count; $i++)
+        {
+            DB::table('meal_tags')->where('id', $i)->update(['meal_id' => $i]);
+        }
+
+        $count = DB::table('meals')->count();
+        for($i=1; $i<=$count; $i++)
+        {
+            DB::table('meal_ingredients')->where('id', $i)->update(['meal_id' => $i]);
         }
     }
 }

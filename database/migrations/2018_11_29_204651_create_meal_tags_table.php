@@ -14,9 +14,10 @@ class CreateMealTagsTable extends Migration
     public function up()
     {
         Schema::create('meal_tags', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('meal_id')->unsigned();
             $table->integer('tag_id')->unsigned();
-            $table->primary(['meal_id','tag_id']);
+            //$table->primary(['meal_id','tag_id']);
             $table->timestamps();
 
         });

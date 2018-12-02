@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/meals/lang={locale}&tags={tagID}', 'MealController@main');
+
